@@ -35,29 +35,32 @@ Este proyecto utiliza **Python**, **OpenCV** y **NumPy** para detectar monedas m
 
 ### 1. Clona el repositorio
 ```bash
-git clone https://github.com/tu_usuario/tu_repositorio.git
-cd tu_repositorio
+git clone https://github.com/mdzpaulina/contador-de-monedas.git
+cd contador-de-monedas
 ```
 
 ### 2. Instala las dependencias
 
 #### 🪟 Windows
 ```bash
-pip install opencv-python numpy
+pip install opencv-python
+pip install numpy
 ```
 
 #### 🍏 macOS
 Primero asegúrate de tener Homebrew y Python instalado:
 ```bash
 brew install python
-pip3 install opencv-python numpy
+pip3 install opencv-python
+pip3 install numpy
 ```
 
 #### 🐧 Linux (Debian/Ubuntu)
 ```bash
 sudo apt update
 sudo apt install python3-pip
-pip3 install opencv-python numpy
+pip3 install opencv-python
+pip3 install numpy
 ```
 
 ### 3. Ejecuta el script principal
@@ -80,6 +83,7 @@ python3 main.py
 
 - Las imágenes deben estar en la carpeta `IMGs_monedas/`.
 - Cada imagen debe mostrar monedas mexicanas (1, 2, 5, 10 pesos) sobre una superficie con contraste.
+- la imagen debe de ser tomada a 10 centimetros de la superficie.
 - El script funciona mejor si las imágenes tienen una resolución razonable y fondo uniforme.
 
 ## 🛠️ Archivos importantes
