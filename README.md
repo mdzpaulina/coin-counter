@@ -126,4 +126,4 @@ Y se abrirá una ventana con los círculos dibujados sobre las monedas y el tota
 ## ✨ Autores
 
 Desarrollado por **Paulina Méndez López**  y **Gael Cumplido Mendoza**, 
-Estudiantes de Ingeniería en el Tecnológico de Monterrey
+Estudiantes de Ingeniería en el Tecnológico de Monterrey Campus Guadalajara
