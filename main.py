@@ -1,7 +1,9 @@
 import os
 import cv2
+import numpy as np
 from desenfoque_gaussiano import filtro_gaussiano
 import pytesseract
+
 # Ruta de Tesseract
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
@@ -19,11 +21,9 @@ monedas_suavizado2 = filtro_gaussiano(imagen_monedas2, 20)
 # Escala de grises
 monedas_gris = cv2.cvtColor(monedas_suavizado, cv2.COLOR_BGR2GRAY)
 monedas_gris2 =  cv2.cvtColor(monedas_suavizado2, cv2.COLOR_BGR2GRAY)
-cv2.imshow("Gris", monedas_gris)
-
-# Deteccion de círculos
 
 
-
+# Mostrar resultado
+cv2.imshow("Circulos detectados", monedas_gris)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
