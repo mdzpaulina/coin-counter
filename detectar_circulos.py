@@ -3,7 +3,7 @@ import numpy as np
 import desenfoque_gaussiano as dg
 
 # Cargar imagen
-imagen_original = cv2.imread("monedas_6.jpg")
+imagen_original = cv2.imread("./IMGs_monedas/monedas_1.jpg")
 
 #achicar la imagen el doble de su tamaño
 imagen_original = cv2.resize(imagen_original, (0, 0), fx=0.5, fy=0.5)
