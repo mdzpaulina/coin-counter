@@ -1,29 +1,43 @@
-import os
 import cv2
 import numpy as np
-from desenfoque_gaussiano import filtro_gaussiano
-import pytesseract
+import preprocezamiento as pp
+import clasificacion as cl
+# Cargar imagen
+imagen_original = cv2.imread("./IMGs_monedas/monedas_7.jpg")
 
-# Ruta de Tesseract
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+#Procesar imagen
+imagen_original, imagen_blur = pp.procezamiento(imagen_original)
 
-# Ruta actual del script
-carpeta_actual = os.path.dirname(__file__)
+# Detectar círculos
+circulos = cv2.HoughCircles(
+    imagen_blur,
+    cv2.HOUGH_GRADIENT,
+    dp = 1.2,
+    minDist = 50,
+    param1 = 100,
+    param2 = 30,
+    minRadius = 40,
+    maxRadius = 80
+)
 
-# Carga de la imagen
-imagen_monedas = cv2.imread(os.path.join(carpeta_actual, "./monedas.jpeg"))
-imagen_monedas2 = cv2.imread(os.path.join(carpeta_actual, "./monedas2.jpg"))
+# Copiar imagen para dibujar resultados
+imagen = imagen_original.copy()
 
-# Desenfoque Gaussiano
-monedas_suavizado = filtro_gaussiano(imagen_monedas, 5)
-monedas_suavizado2 = filtro_gaussiano(imagen_monedas2, 20)
+# Dibujar y clasificar círculos
+conteo, valor_total = cl.clasificacion(imagen, circulos)
 
-# Escala de grises
-monedas_gris = cv2.cvtColor(monedas_suavizado, cv2.COLOR_BGR2GRAY)
-monedas_gris2 =  cv2.cvtColor(monedas_suavizado2, cv2.COLOR_BGR2GRAY)
+# Mostrar resumen en la imagen
+texto = f"Total: ${valor_total} | $1:{conteo[1]} $2:{conteo[2]} $5:{conteo[5]} $10:{conteo[10]}"
+cv2.rectangle(imagen, (0, 0), (imagen.shape[1], 25), (255, 255, 255), -1)
+cv2.putText(imagen, texto, (10, 18), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1)
 
-
-# Mostrar resultado
-cv2.imshow("Circulos detectados", monedas_gris)
+# Mostrar imagen
+cv2.imshow("Detección de Monedas", imagen)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+# Mostrar resumen en consola
+print("\nResumen de monedas detectadas:")
+for val in [1, 2, 5, 10]:
+    print(f"Monedas de ${val}: {conteo[val]}")
+print(f"Valor total: ${valor_total}")
