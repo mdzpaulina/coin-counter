@@ -18,8 +18,8 @@ def nothing(x):
     pass
 
 # Crear trackbars
-cv2.createTrackbar("minRadius", "Ajuste de Círculos", 10, 100, nothing)
-cv2.createTrackbar("maxRadius", "Ajuste de Círculos", 50, 150, nothing)
+cv2.createTrackbar("minRadius", "Ajuste de Círculos", 30, 100, nothing)
+cv2.createTrackbar("maxRadius", "Ajuste de Círculos", 80, 150, nothing)
 cv2.createTrackbar("param2", "Ajuste de Círculos", 30, 100, nothing)
 
 while True:
@@ -38,9 +38,9 @@ while True:
         dp=1.2,
         minDist=50,
         param1=100,
-        param2=50,
-        minRadius=40,
-        maxRadius=63,
+        param2=param2,
+        minRadius=min_radius,
+        maxRadius=max_radius,
     )
 
     # Dibujar círculos detectados
