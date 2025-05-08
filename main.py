@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-import funciones.preprocezamiento as pp
+import funciones.preprocesamiento as pp
 import funciones.clasificacion as cl
 
 # Cargar imagen
