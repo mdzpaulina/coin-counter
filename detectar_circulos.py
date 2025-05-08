@@ -3,13 +3,13 @@ import numpy as np
 import desenfoque_gaussiano as dg
 
 # Cargar imagen
-imagen_original = cv2.imread("./IMGs_monedas/monedas_1.jpg")
+imagen_original = cv2.imread("./IMGs_monedas/monedas_5.jpg")
 
 #achicar la imagen el doble de su tamaño
-imagen_original = cv2.resize(imagen_original, (0, 0), fx=0.5, fy=0.5)
+imagen_original = imagen_original[::2, ::2]
 
 gris = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2GRAY)
-blur = dg.filtro_gaussiano(gris, 5)
+blur = dg.filtro_gaussiano(gris, 6)
 
 # Ventana con trackbars
 cv2.namedWindow("Ajuste de Círculos")
@@ -18,7 +18,7 @@ def nothing(x):
     pass
 
 # Crear trackbars
-cv2.createTrackbar("minRadius", "Ajuste de Círculos", 32, 100, nothing)
+cv2.createTrackbar("minRadius", "Ajuste de Círculos", 40, 100, nothing)
 cv2.createTrackbar("maxRadius", "Ajuste de Círculos", 80, 150, nothing)
 cv2.createTrackbar("param2", "Ajuste de Círculos", 30, 100, nothing)
 
@@ -61,7 +61,7 @@ while True:
                 valor = 2
             elif 56 <= r <= 59:
                 valor = 5
-            elif 60 <= r <= 65:
+            elif 60 <= r <= 66:
                 valor = 10
             else:
                 valor = 0  # fuera de rango
