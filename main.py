@@ -1,29 +1,39 @@
-import os
 import cv2
 import numpy as np
-from desenfoque_gaussiano import filtro_gaussiano
-import pytesseract
-
-# Ruta de Tesseract
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-
-# Ruta actual del script
-carpeta_actual = os.path.dirname(__file__)
-
-# Carga de la imagen
-imagen_monedas = cv2.imread(os.path.join(carpeta_actual, "monedas.jpeg"))
-imagen_monedas2 = cv2.imread(os.path.join(carpeta_actual, "monedas2.jpg"))
-
-# Desenfoque Gaussiano
-monedas_suavizado = filtro_gaussiano(imagen_monedas, 5)
-monedas_suavizado2 = filtro_gaussiano(imagen_monedas2, 20)
-
-# Escala de grises
-monedas_gris = cv2.cvtColor(monedas_suavizado, cv2.COLOR_BGR2GRAY)
-monedas_gris2 =  cv2.cvtColor(monedas_suavizado2, cv2.COLOR_BGR2GRAY)
+import desenfoque_gaussiano as dg
 
 
-# Mostrar resultado
-cv2.imshow("Circulos detectados", monedas_gris)
+# Cargar imagen
+imagen_original = cv2.imread("monedas_5.jpg")
+
+# Achicar la imagen a la mitad de su tamaño
+imagen_original = imagen_original[::2, ::2]
+
+# Convertir a escala de grises y aplicar filtro gaussiano
+gris = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2GRAY)
+blur = dg.filtro_gaussiano(gris, 6)
+
+# Detectar círculos
+circulos = cv2.HoughCircles(
+    blur,
+    cv2.HOUGH_GRADIENT,
+    dp=1.2,
+    minDist=50,
+    param1=100,
+    param2=30,
+    minRadius=30,
+    maxRadius=80
+)
+# Dibujar círculos detectados
+imagen = imagen_original.copy()
+if circulos is not None:
+    circulos = np.round(circulos[0, :]).astype("int")
+    for (x, y, r) in circulos:
+        cv2.circle(imagen, (x, y), r, (0, 255, 0), 2)
+        cv2.putText(imagen, f"{r}px", (x - 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+
+
+# Mostrar imagen
+cv2.imshow("Círculos detectados", imagen)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
