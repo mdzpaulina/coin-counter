@@ -11,8 +11,8 @@ pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tessera
 carpeta_actual = os.path.dirname(__file__)
 
 # Carga de la imagen
-imagen_monedas = cv2.imread(os.path.join(carpeta_actual, "monedas.jpeg"))
-imagen_monedas2 = cv2.imread(os.path.join(carpeta_actual, "monedas2.jpg"))
+imagen_monedas = cv2.imread(os.path.join(carpeta_actual, "./monedas.jpeg"))
+imagen_monedas2 = cv2.imread(os.path.join(carpeta_actual, "./monedas2.jpg"))
 
 # Desenfoque Gaussiano
 monedas_suavizado = filtro_gaussiano(imagen_monedas, 5)
