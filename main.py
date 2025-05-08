@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
-import preprocezamiento as pp
-import clasificacion as cl
+import funciones.preprocezamiento as pp
+import funciones.clasificacion as cl
+
 # Cargar imagen
 imagen_original = cv2.imread("./IMGs_monedas/monedas_7.jpg")
 

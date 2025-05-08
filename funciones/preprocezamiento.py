@@ -1,5 +1,5 @@
 import cv2
-import desenfoque_gaussiano as dg
+import funciones.desenfoque_gaussiano as dg
 
 def procezamiento(imagen):
     """
