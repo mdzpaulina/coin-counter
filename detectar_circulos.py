@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import desenfoque_gaussiano as dg
 
 # Cargar imagen
 imagen_original = cv2.imread("monedas_6.jpg")
@@ -8,7 +9,7 @@ imagen_original = cv2.imread("monedas_6.jpg")
 imagen_original = cv2.resize(imagen_original, (0, 0), fx=0.5, fy=0.5)
 
 gris = cv2.cvtColor(imagen_original, cv2.COLOR_BGR2GRAY)
-blur = cv2.GaussianBlur(gris, (9, 9), 0)
+blur = dg.filtro_gaussiano(gris, 5)
 
 # Ventana con trackbars
 cv2.namedWindow("Ajuste de Círculos")
@@ -37,7 +38,7 @@ while True:
         dp=1.2,
         minDist=50,
         param1=100,
-        param2=12,
+        param2=50,
         minRadius=40,
         maxRadius=63,
     )
