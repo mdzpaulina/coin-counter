@@ -1,17 +1,17 @@
-# 💰 Detección y Clasificación de Monedas Mexicanas con OpenCV
+# 💰 Detection and Classification of Mexican Coins with OpenCV
 
-Este proyecto utiliza **Python**, **OpenCV** y **NumPy** para detectar monedas mexicanas en imágenes y clasificar su valor (1, 2, 5 y 10 pesos) automáticamente a partir del tamaño de cada moneda.
+This project uses **Python**, **OpenCV**, and **NumPy** to detect Mexican coins in images and classify their value (1, 2, 5, and 10 pesos) automatically based on the approximate size of each coin.
 
-## 🗂️ Estructura del Proyecto
+## 🗂️ Project Structure
 
 ```
 .
 ├── main.py
 ├── README.md
 ├── funciones/
-│   ├── clasificacion.py
-│   ├── desenfoque_gaussiano.py
-│   └── preprocesamiento.py
+│   ├── classification.py
+│   ├── gaussian_blur.py
+│   └── preprocessing.py
 └── IMGs_monedas/
     ├── monedas_1.jpg
     ├── monedas_2.jpg
@@ -20,26 +20,27 @@ Este proyecto utiliza **Python**, **OpenCV** y **NumPy** para detectar monedas m
     ├── monedas_5.jpg
     ├── monedas_6.jpg
     └── monedas_7.jpg
+
 ```
 
-## 🧠 ¿Qué hace el programa?
+## 🧠 What does the program do?
 
-1. **Carga una imagen** desde la carpeta `IMGs_monedas`.
-2. **Reduce su tamaño** para facilitar el procesamiento.
-3. **Convierte a escala de grises y aplica un desenfoque gaussiano.**
-4. **Detecta círculos** con la transformada de Hough para identificar monedas.
-5. **Clasifica las monedas** según su tamaño aproximado.
-6. **Dibuja los círculos detectados y muestra el valor total**.
+1. Loads an image from the IMGs_monedas/ folder.
+2. Resizes it for easier processing.
+3. Converts it to grayscale and applies a Gaussian blur.
+4. Detects circles using the Hough Transform to identify coins.
+5. Classifies coins based on their approximate size.
+6. Draws the detected circles and displays the total value.
 
-## ▶️ Cómo ejecutar el programa
+## ▶️ How to run the program
 
-### 1. Clona el repositorio
+### 1. Clone the repository
 ```bash
 git clone https://github.com/mdzpaulina/contador-de-monedas.git
 cd contador-de-monedas
 ```
 
-### 2. Instala las dependencias
+### 2. Install dependencies
 
 #### 🪟 Windows
 ```bash
@@ -48,7 +49,7 @@ pip install numpy
 ```
 
 #### 🍏 macOS
-Primero asegúrate de tener Homebrew y Python instalado:
+Make sure you have Homebrew and Python installed:
 ```bash
 brew install python
 pip3 install opencv-python
@@ -63,7 +64,7 @@ pip3 install opencv-python
 pip3 install numpy
 ```
 
-### 3. Ejecuta el script principal
+### 3. Run the main script
 
 #### Windows
 ```bash
@@ -75,32 +76,32 @@ python main.py
 python3 main.py
 ```
 
-> Asegúrate de estar en el directorio del proyecto al ejecutar el script.
+Make sure you are in the project directory when running the script.
 
 ---
 
-## 📷 Requisitos de las imágenes
+## 📷 Image Requirements
 
-- Las imágenes deben estar en la carpeta `IMGs_monedas/`.
-- Cada imagen debe mostrar monedas mexicanas (1, 2, 5, 10 pesos) sobre una superficie con contraste.
-- la imagen debe de ser tomada a 10 centimetros de la superficie.
-- El script funciona mejor si las imágenes tienen una resolución razonable y fondo uniforme.
+- Images must be stored inside the folder `IMGs_monedas/`.
+- The picture should be taken approximately 10 cm from the surface.
+- Each image should contain Mexican coins (1, 2, 5, 10 pesos) on a contrasting surface.
+- Works best with images that have a uniform background and reasonable resolution.
 
-## 🛠️ Archivos importantes
+## 🛠️ Key Files
 
-| Archivo/Carpeta                  | Descripción                                                              |
+| File/Folder                 | Description                                                              |
 |----------------------------------|--------------------------------------------------------------------------|
-| `main.py`                        | Ejecuta todo el proceso de carga, detección y visualización             |
-| `funciones/preprocesamiento.py` | Reduce tamaño, convierte a escala de grises y desenfoca la imagen       |
-| `funciones/desenfoque_gaussiano.py` | Implementación del filtro gaussiano personalizado                    |
-| `funciones/clasificacion.py`    | Clasifica las monedas detectadas según su tamaño                        |
-| `IMGs_monedas/`                 | Contiene las imágenes de entrada a analizar                             |
+| `main.py`                        | Executes the entire process: load, detection, and visualization             |
+| `funciones/preprocesamiento.py` | Resizes, converts to grayscale, and blurs the image       |
+| `funciones/desenfoque_gaussiano.py` | Custom implementation of Gaussian blur                    |
+| `funciones/clasificacion.py`    | Classifies detected coins based on size                        |
+| `IMGs_monedas/`                 | Contains the input images to analyze                           |
 
 ---
 
-## 💡 Ejemplo de salida
+## 💡 Example Output
 
-La consola mostrará un resumen como este:
+The console will display a summary like this:
 
 ```
 Resumen de monedas detectadas:
@@ -111,19 +112,19 @@ Monedas de $10: 1
 Valor total: $28
 ```
 
-Y se abrirá una ventana con los círculos dibujados sobre las monedas y el total.
+And a window will open showing the detected circles on the coins and the total value.
 
 ---
 
-## 🤖 Requisitos
+## Requirements
 
-- Python 3.7 o superior
+- Python 3.7 or higher
 - OpenCV
 - NumPy
 
 ---
 
-## ✨ Autores
+## ✨ Authors
 
-Desarrollado por **Paulina Méndez López**  y **Gael Cumplido Mendoza**, 
-Estudiantes de Ingeniería en el Tecnológico de Monterrey Campus Guadalajara
+Developed by Paulina Méndez López and Gael Cumplido Mendoza,
+Computer Science Engineering students at Tecnológico de Monterrey, Campus Guadalajara.
