@@ -127,4 +127,4 @@ And a window will open showing the detected circles on the coins and the total v
 ## ✨ Authors
 
 Developed by Paulina Méndez López and Gael Cumplido Mendoza,
-Computer Science Engineering students at Tecnológico de Monterrey, Campus Guadalajara.
+Computer Science Engineering and Robotics and Digital Systems Engineering students at Tecnológico de Monterrey, Campus Guadalajara.
