@@ -1,6 +1,7 @@
 # 💰 Detection and Classification of Mexican Coins with OpenCV
 
 This project uses **Python**, **OpenCV**, and **NumPy** to detect Mexican coins in images and classify their value (1, 2, 5, and 10 pesos) automatically based on the approximate size of each coin.
+
 Link to a visual presentation of the proyect:
 https://www.canva.com/design/DAGm5VH6KEk/ngrVRPkBPWjOlJbCG9Ijjw/edit?utm_content=DAGm5VH6KEk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
